@@ -1,0 +1,38 @@
+
+.res-container {
+    width: 300px;
+    margin: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.res-card {
+    width: 100%; /* Use full width of the container */
+    height: auto; /* Let the height adjust based on content */
+    padding: 10px; /* Add some padding for better spacing */
+     /* Optional: Add a border for better visibility */
+     /* Optional: Rounded corners */
+     /* Optional: Add shadow */
+    background-color: #fff; /* Optional: Add background */
+}
+
+.res-card:hover{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.biriyani-img {
+    width: 100%; /* Stretch the image to fit the card width */
+    height: 150px; /* Adjust image height to ensure it doesn't overflow */
+    /* object-fit: cover;  */
+    border-radius: 6px; /* Optional: Rounded corners for the image */
+}
+
+.res-cantainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add consistent spacing between cards */
+    /* justify-content: space-between; */
+}
