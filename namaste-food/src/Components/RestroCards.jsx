@@ -1,11 +1,10 @@
-import React from 'react'
-import './restroCard.css'
+import React from "react";
+import "./restroCard.css";
 
 //for a dynamic rendering of cards use props
 // const RestroCards = (props) => {        //u can do like this  const RestroCards = ({resname, cuisins})
 //     const{resname, cuisins} = props   //destructuring props
-    
-    
+
 //   return (
 //       <div className='res-container'>
 //           <div className='res-card'>
@@ -19,27 +18,19 @@ import './restroCard.css'
 //   )
 // }
 
+export const RestroCards = ({ resData }) => {
+  const { thumbnail, title, rating, description } = resData; // Further destructure resData
 
-const RestroCards = (props) => {  
-    const { resData } = props;
-    console.log(resData);
-    
-    
-    return (
-        <div className="res-container">
-            <div className="res-card">
-                
-                <img src={resData.thumbnail}></img>
-                
-                <h3>{resData.title || "Title not available"}</h3>
-               
-                <h4>{resData.rating || "No rating available"}</h4>
-            </div>
-        </div>
-
-    );
+  return (
+    <div className="res-container">
+      <div className="res-card">
+        <img src={thumbnail} alt={title || "Thumbnail not available"} />
+        <h3>{title || "Title not available"}</h3>
+        <h6>{description || "No description available"}</h6>
+        <h5>{rating || "No rating available"}</h5>
+      </div>
+    </div>
+  );
 };
 
 export default RestroCards;
-
-

@@ -1,11 +1,12 @@
 import React from 'react'
 import './header.css';
+import { HEADER_LOGO } from '../utils/constants';
 
 const Header = () => {
   return (
       <div className='header'>
           <div className='logo-container'>            
-                <img className='logo' src='https://img.freepik.com/free-vector/food-shopping-logo-template-design_460848-10299.jpg'></img>
+                <img className='logo' src={HEADER_LOGO}></img>
           </div>
           <div className='nav-items'>
               <ul>
