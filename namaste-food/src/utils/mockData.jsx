@@ -1,4 +1,4 @@
-export const resObj = [
+const resObj = [
   {
     id: 1,
     title: "Essence Mascara Lash Princess",
@@ -66,7 +66,7 @@ export const resObj = [
     category: "beauty",
     price: 19.99,
     discountPercentage: 5.5,
-    rating: 3.28,
+    rating: 4.01,
     stock: 44,
     tags: ["beauty", "eyeshadow"],
     brand: "Glamour Beauty",
@@ -177,3 +177,5 @@ export const resObj = [
       "https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/thumbnail.png",
   },
 ];
+
+export default resObj;

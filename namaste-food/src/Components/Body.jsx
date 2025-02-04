@@ -1,7 +1,7 @@
 import RestroCards from "./RestroCards";
 import "./body.css";
-import { resObj } from "../utils/mockData";
-console.log(resObj);
+import resObj from "../utils/mockData";
+import { useState } from "react";
 
 // let res = [
 //   {
@@ -23,12 +23,13 @@ console.log(resObj);
 
 //logic to filter based on the rating
 
-const FilteredresObj = resObj.filter((resItem) => resItem.rating > 4);
-console.log(FilteredresObj);
-
-// console.log(res.map((resItem) => resItem.id));
+// const FilteredresObj = resObj.filter((resItem) => resItem.rating > 4);
+// console.log(FilteredresObj);
 
 const Body = () => {
+  const [ResList, setResList] = useState(resObj);
+  console.log(ResList);
+
   return (
     <div className="body">
       <div className="search">
@@ -38,7 +39,8 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            console.log(FilteredresObj);
+            const FilteredResturant = ResList.filter((item) => item.rating > 4);
+            setResList(FilteredResturant);
           }}
         >
           Top Rated Resturants
@@ -51,7 +53,8 @@ const Body = () => {
                 <RestroCards resData={resObj[2]} />  */}
 
         {/* Using map function */}
-        {resObj.map((restaurant) => (
+        {/*use state variable here while mapping as well its was resObj*/}
+        {ResList.map((restaurant) => (
           <RestroCards key={restaurant.id} resData={restaurant} />
         ))}
       </div>
