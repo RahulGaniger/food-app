@@ -19,12 +19,17 @@ import "./restroCard.css";
 // }
 
 export const RestroCards = ({ resData }) => {
-  const { thumbnail, title, rating, description } = resData; // Further destructure resData
+  // destructring of array
+  const { thumbnail, title, rating, description } = resData;
 
   return (
     <div className="res-container">
       <div className="res-card">
-        <img src={thumbnail} alt={title || "Thumbnail not available"} />
+        <img
+          src={thumbnail}
+          alt={title || "Image not available"}
+          className="img"
+        />
         <h3>{title || "Title not available"}</h3>
         <h6>{description || "No description available"}</h6>
         <h5>{rating || "No rating available"}</h5>

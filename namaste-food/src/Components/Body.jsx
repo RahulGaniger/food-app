@@ -1,7 +1,7 @@
 import RestroCards from "./RestroCards";
+import ShimmerUi from "./ShimmerUi";
 import "./body.css";
-import resObj from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // let res = [
 //   {
@@ -27,24 +27,72 @@ import { useState } from "react";
 // console.log(FilteredresObj);
 
 const Body = () => {
-  const [ResList, setResList] = useState(resObj);
-  console.log(ResList);
+  const [ResList, setResList] = useState([]);
 
+  const [filterBtn, setFilterBtn] = useState("");
+
+  const [filteredRes, setFilteredrestaurant] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch("https://dummyjson.com/products");
+
+    //optional chaining
+    const json = await data?.json();
+    setResList(json.products);
+    setFilteredrestaurant(json.products);
+  };
+
+  //conditional rendering
+  // if (ResList.length === 0) {
+  //   return <ShimmerUi />; //<h1>Loading.....</h1>; for shimmer ui use here add component in return
+  // }
+
+  //using ternery operator
+  // return ResList.length === 0 ? (
+  //   <ShimmerUi />
+  // ) : (
   return (
     <div className="body">
-      <div className="search">
-        <div className="search-text">Search</div>
-      </div>
-      <div className="filter-res">
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const FilteredResturant = ResList.filter((item) => item.rating > 4);
-            setResList(FilteredResturant);
-          }}
-        >
-          Top Rated Resturants
-        </button>
+      <div className="body-2">
+        <div className="search">
+          <input
+            className="search-text"
+            value={filterBtn}
+            onChange={(e) => {
+              setFilterBtn(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              // Filter the restaurants based on user input
+              const filterRes = ResList.filter((item) =>
+                item.title.toLowerCase().includes(filterBtn.toLowerCase())
+              );
+
+              setFilteredrestaurant(filterRes);
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div className="filter-res">
+          <button
+            className="filter-btn"
+            onClick={() => {
+              const FilteredResturant = ResList.filter(
+                (item) => item.rating > 4
+              );
+              setResList(FilteredResturant);
+            }}
+          >
+            Top Rated Resturants
+          </button>
+        </div>
       </div>
       <div className="res-cantainer">
         {/* passing obj as a prop for dynamic card  */}
@@ -54,7 +102,7 @@ const Body = () => {
 
         {/* Using map function */}
         {/*use state variable here while mapping as well its was resObj*/}
-        {ResList.map((restaurant) => (
+        {filteredRes.map((restaurant) => (
           <RestroCards key={restaurant.id} resData={restaurant} />
         ))}
       </div>
