@@ -52,10 +52,9 @@ const Body = () => {
   // }
 
   //using ternery operator
-  // return ResList.length === 0 ? (
-  //   <ShimmerUi />
-  // ) : (
-  return (
+  return ResList.length === 0 ? (
+    <ShimmerUi />
+  ) : 
     <div className="body">
       <div className="body-2">
         <div className="search">
@@ -107,7 +106,7 @@ const Body = () => {
         ))}
       </div>
     </div>
-  );
+  
 };
 
 export default Body;
